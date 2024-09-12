@@ -1,0 +1,138 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+    
+}
+.block.tasks-table{
+    padding-bottom: 60px;
+}
+th{
+  font-family: PT Sans Caption;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+  padding: 40px;
+  color: #333;
+}
+th.status{
+    padding-left: 55px!important;
+}
+.task-text{
+  font-family: PT Sans Caption;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+}
+td{
+    padding-left: 40px;
+    padding-bottom: 10px;
+    margin-right: 40px;
+    padding-top: 10px;  
+}
+
+th.task{
+    width: 80%;
+    
+}
+tr{
+    margin-top: 10px;
+    border-bottom: 1px solid #EAEAEA;   
+}
+tr:last-child{
+    border-bottom: none;
+}
+
+th.status{
+    width: 20%; 
+}
+.table-content:last-child{
+    padding-bottom: 40px;
+}
+.btn-status{
+    border: 1px solid #F4F4F4;
+    border-radius: 39px;
+    background: #F4F4F4;
+    color: #333;
+    font-family: PT Sans Caption;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 4px 24px;
+    cursor: pointer;
+}
+.btn-table-more{
+    padding: 12px 32px;
+    border: 2px solid #FF6600;
+    background: #fff;
+    color: #FF6600;
+    font-weight: 700;
+    font-family: PT Sans Caption;
+    font-size: 14px;
+    line-height: 24px;
+    border-radius: 50px;
+    margin-top: 40px;
+    cursor: pointer;
+    display: none;
+}
+span.arrow{
+    margin-left: 14px;
+}
+.btn-table-more.active {
+    display: block; 
+}
+
+
+@media (max-width: 1220px) {
+ 
+}
+
+@media (max-width: 992px) { 
+ 
+} 
+
+@media (max-width: 640px) {
+    th.status{
+        display: none;
+    } 
+    table{
+        background: transparent;
+        width: 90%;
+
+    }
+    tr{
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #fff;
+        border-radius: 32px;
+        background: #fff;
+        margin-top: 24px;
+    }
+    tr.table-title{
+        border: none;
+        background: transparent;
+    }
+    .btn-status{
+        border: 2px solid #FF6600;
+        border-radius: 50px;
+        background: #fff;
+        color: #FF6600;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 24px;
+        padding: 8px 106px;
+        margin-bottom: 24px;
+        margin-left: 24px;
+    }
+    .task-text{
+        font-weight: 700;
+        padding: 20px 24px;
+    }
+    td, th{
+        padding:0 5px;
+    }
+
+  .btn-table-more{
+    margin-top: 24px;
+  }
+}

@@ -1,0 +1,36 @@
+.main-title { 
+    font-size: 32px; 
+    font-weight: 700; 
+    color: #333333; 
+    font-family: Montserrat; 
+    line-height: 40px; 
+    padding-top: 64px;
+    
+} 
+.footer{
+    background: #BBB8B6;
+    height: 144px;
+    border-radius: 48px 48px 0 0 ;
+}
+
+@media (max-width: 1220px) {
+    .main-title {
+        font-size: 28px; 
+    }
+}
+
+@media (max-width: 992px) { 
+    .main-title { 
+        font-size: 24px; 
+        padding-top: 48px; 
+    } 
+    
+} 
+
+@media (max-width: 640px) { 
+    .main-title { 
+        font-size: 20px; 
+        padding-top: 32px; 
+    } 
+
+}

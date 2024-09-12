@@ -1,0 +1,96 @@
+.activeColor{
+  background: #8ad4ff!important;
+}
+.task-popup{
+    background: #FFF;
+    border-radius: 16px;
+    position: fixed;
+    top: 25%;
+    right:50%;
+    
+  } 
+  .card-content{
+    padding: 24px;
+  }
+  .card-block{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .title-change-task{
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    color: #333;
+  }
+  hr{
+    margin: 16px 0;
+    background: #EAEAEA;
+    height: 2px;
+    border: 1px solid #EAEAEA;;
+  }
+  .popup-input{
+    font-family: PT Sans Caption;
+    color: #333;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 400px;
+    padding: 16px;
+    width: 327px;
+    height: 52px;
+    border: 1px solid #F4F4F4;
+    border-radius: 24px;
+  
+  }
+  .btn-popup-close{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  
+  }
+  .btn-popup-apply,.btn-popup-delete{
+    line-height: 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: PT Sans Caption;
+    cursor: pointer;
+  }
+  .btn-popup-apply{
+    padding: 8px 24px;
+    color: #FFFFFF;
+    background: #FF6600;
+    border: 1px solid #FF6600 ;
+  }
+  .btn-popup-delete{
+    padding: 8px 32px;
+    color: #FF6600;
+    background: #FFFFFF;
+    border: 2px solid #FF6600;
+  }
+  .btns-card{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+  .block-status{
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  
+
+@media (max-width: 1220px) {
+  
+}
+
+@media (max-width: 992px) { 
+
+
+} 
+
+@media (max-width: 640px) { 
+
+ 
+}

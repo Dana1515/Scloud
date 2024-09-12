@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/src/assets/fonts/ofont.ru_Montserrat.ttf');
+         
+}
+@font-face {
+    font-family: 'PT Sans Caption';
+    src: url('/src/assets/fonts/PT_Sans-Caption-Web-Regular.ttf');      
+}
+@font-face {
+    font-family: 'PT Sans';
+    src: url('/src/assets/fonts/PT_Sans-Web-Regular.ttf');      
+}
+/* общие стили */
+.block-current-tasks, table { 
+    background: #fff; 
+    margin-top: 48px; 
+    border-radius: 50px; 
+    border: 1px solid #EAEAEAAA; 
+} 
+
+section, header{
+    padding: 0 3%;
+} 
+section.currentTasks,header{
+    background: #F4F4F4;
+}
+
+
