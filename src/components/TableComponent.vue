@@ -48,6 +48,7 @@
                         >
                             <img src="../assets/images/close.jpg"/>
                         </button> 
+                        <button class="add-btn-adaptive" @click="addTask"></button> 
                     </div> 
                 </div>  
             </div> 
@@ -81,39 +82,6 @@
         </div> 
     </section>
     
-    <section class="taskList"> 
-        <h1 class="main-title board">Доска задач</h1> 
- 
-        <div class="boards">
-            <div class="board">
-                <div class="board-name">Открыто</div>
-                <div class="boardzone" id="dropzone" @dragover.prevent @drop="onDrop"   >
-                    <div  class=" board-task-name" v-for="task in openTasks" :key="task.id" > 
-                        <div id="draggable" class="task-name " draggable="true" @dragstart="onDragStart" @dragend="onDragEnd" >{{ task.text }}</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="board">
-                <div class="board-name">В работе</div>
-                <div class="boardzone" id="dropzone" @dragover.prevent @drop="onDrop"  >
-                    <div  class=" board-task-name"  v-for="task in  inProgressTasks" :key="task.id" >
-                        <div id="draggable" class="task-name " draggable="true" @dragstart="onDragStart" @dragend="onDragEnd" >{{ task.text }}</div>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="board">
-                <div class="board-name">Закрыто</div>
-                <div class="boardzone" id="dropzone" @dragover.prevent @drop="onDrop"  >
-                    <div  class=" board-task-name"  v-for="task in  finishedTasks" :key="task.id">
-                        <div id="draggable" class="task-name " draggable="true" @dragstart="onDragStart" @dragend="onDragEnd" >{{ task.text }}</div>
-                    </div>
-                </div>
-            </div> 
-        </div>
-       
-    </section> 
 
     <TaskPopup  
                 v-if="isPopupVisible"  
@@ -173,38 +141,6 @@ export default {
         },
     }, 
     methods: { 
-        onDragStart(event) {
-      event.dataTransfer.setData('text/plain', event.target.id);
-      event.target.style.opacity = 0.5; 
-    },
-    onDragEnd(event) {
-      event.target.style.opacity = ''; 
-    },
-    onDrop(event) {
-      const data = event.dataTransfer.getData('text/plain');
-      const draggableElement = document.getElementById(data);
-      event.target.appendChild(draggableElement); 
-      const taskId = event.dataTransfer.getData('text/plain'); 
-        const task = this.tasks.find(task => task.id == taskId); 
-
-        if (!task) return;
-
-        if (event.target.classList.contains('boardzone')) {
-            const boardName = event.target.parentElement.querySelector('.board-name').innerText;
-
-            if (boardName === 'Открытo') {
-                task.status = 'Открыт';
-            } else if (boardName === 'В работе') {
-                task.status = 'В работе';
-            } else if (boardName === 'Закрыто') {
-                task.status = 'Закрыт';
-            }
-        }
-        console.log(`Текущий статус задачи ${taskId}: ${task.status}`);
-
-        this.saveTasksToLocalStorage();
-        
-    },
 
         addTask() {   
           
@@ -219,13 +155,14 @@ export default {
                 status: 'Открыт',   
             };   
           
-
- 
             this.tasks.push(newTaskObj);  
+            this.tasks.unshift(newTaskObj);
             this.saveTasksToLocalStorage(); 
 
             this.newTask = '';   
             this.nextTaskId++;  
+
+            this.$emit('update-tasks', this.tasks);
         }, 
         clearInput() { 
             this.newTask = ''; 
@@ -238,32 +175,38 @@ export default {
             this.isPopupVisible = false;  
             this.selectedTask = null;  
         },  
-        handleApply(updatedTask) { 
-            console.log('Задача применена:', updatedTask); 
-            const index = this.tasks.findIndex(task => task.id === updatedTask.id); 
-            if (index !== -1) { 
-                this.tasks.splice(index, 1, updatedTask); 
-                this.saveTasksToLocalStorage(); 
-            } 
-            this.closePopup();  
-        },  
+        handleApply(updatedTask) {
+            const index = this.tasks.findIndex(task => task.id === updatedTask.id);
+            if (index !== -1) {
+            this.tasks.splice(index, 1, updatedTask);
+            this.saveTasksToLocalStorage();
+
+            this.$emit('update-tasks', [...this.tasks]); 
+            }
+            this.closePopup();
+        },
+ 
         handleDelete() {   
             
             this.tasks = this.tasks.filter(task => task.id !== this.selectedTask.id);   
             this.saveTasksToLocalStorage();  
             this.closePopup();  
+            this.$emit('update-tasks', this.tasks);
         },  
         getTasksFromLocalStorage() { 
             const tasks = localStorage.getItem('tasks'); 
             return tasks ? JSON.parse(tasks) : []; 
+           
             
         }, 
         getNextTaskIdFromLocalStorage() { 
             const tasks = this.getTasksFromLocalStorage(); 
             return tasks.length ? Math.max(...tasks.map(task => task.id)) + 1 : 1; 
+            
         }, 
         saveTasksToLocalStorage() { 
             localStorage.setItem('tasks', JSON.stringify(this.tasks)); 
+            
         }, 
         toggleTasks() {
             this.allTasksVisible = !this.allTasksVisible; 
@@ -272,10 +215,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 @import '../assets/css/main.css';
 @import '../assets/css/toDoList.css';
 @import '../assets/css/table.css';
-@import '../assets/css/taskList.css'; 
-
 </style>

@@ -1,5 +1,6 @@
 <template>
     <div v-if="isVisible" class="task-popup">
+    <div class="popup-overlay">
       <div class="card-content">
         <div class="card-block">
           <h1 class="title-change-task">Изменение задачи</h1>
@@ -36,6 +37,9 @@
           <button class="btn-popup-delete" @click="$emit('delete')">Удалить задачу</button>
         </div>
       </div>
+
+    </div>
+      
     </div>
   
 </template>

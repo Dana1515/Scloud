@@ -1,13 +1,13 @@
 <template>
   <HeaderComponent/>
-  <ToDoList/>
+  <ToDoListComponent  />
   <FooterComponent/>
   
 </template>
 
 <script>
 import HeaderComponent from './components/HeaderComponent.vue';
-import ToDoList from './components/ToDoList.vue';
+import ToDoListComponent from './ToDoListComponent.vue';
 import FooterComponent from './components/FooterComponent.vue';
 
 
@@ -15,7 +15,7 @@ export default {
   name: 'App',
   components: {
     HeaderComponent,
-    ToDoList,
+    ToDoListComponent,
     FooterComponent,
   }
 }
